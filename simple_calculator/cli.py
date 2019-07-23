@@ -30,7 +30,7 @@ def _exception_handler(op, *args):
 
 
 @click.group()
-def calc():
+def calc():  # pragma: no cover
     """A simple calculator utility."""
     pass
 
