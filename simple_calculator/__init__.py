@@ -1,11 +1,12 @@
 from simple_calculator.calculator import (
-    CalculatorValueError,
     CalculatorTypeError,
-    sum_,
+    CalculatorValueError,
     difference,
     product,
     quotient,
+    sum_,
 )
+
 
 __all__ = [
     "CalculatorValueError",
@@ -17,4 +18,4 @@ __all__ = [
 ]
 
 __doc__ = "An over-engineered calculator."
-__version__ = '0.1.0'
+__version__ = "0.1.0"

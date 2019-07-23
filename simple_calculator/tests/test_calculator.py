@@ -2,30 +2,32 @@
 
 import pytest
 
+
 def test_custom_exceptions():
     from simple_calculator.calculator import (
         CalculatorValueError,
-        CalculatorTypeError
+        CalculatorTypeError,
     )
 
     with pytest.raises(CalculatorValueError) as e1:
-        raise CalculatorValueError('Test error')
+        raise CalculatorValueError("Test error")
 
     assert "Test error" in str(e1)
 
     with pytest.raises(CalculatorTypeError) as e2:
-        raise CalculatorTypeError('Test error')
+        raise CalculatorTypeError("Test error")
 
     assert "Test error" in str(e2)
+
 
 def test_convet_num():
     from simple_calculator.calculator import _convert_num
 
-    _convert_num('1') == 1
-    _convert_num('0.') == 0.
+    _convert_num("1") == 1
+    _convert_num("0.") == 0.0
 
     with pytest.raises(ValueError):
-        _convert_num('None') == 0.
+        _convert_num("None")
 
 
 def test_check_input_not_list():
@@ -46,7 +48,7 @@ def test_check_input_list_length():
         _check_input([])
 
     with pytest.raises(CalculatorValueError) as e2:
-        _check_input([0,])
+        _check_input([0])
 
     with pytest.raises(CalculatorValueError) as e3:
         _check_input(tuple())
@@ -68,7 +70,7 @@ def test_check_input_all_numbers_conversion():
     l3 = ["0", "-1", "-10"]
 
     assert _check_input(l1) == [0, 1, 2]
-    assert _check_input(l2) == [0., -1., 3.5]
+    assert _check_input(l2) == [0.0, -1.0, 3.5]
     assert _check_input(l3) == [0, -1, -10]
 
 
@@ -86,7 +88,7 @@ def test_check_input_all_numbers_error():
         _check_input(l2)
 
     assert "All inputs must be a number, received: " in str(e1)
-    assert "All inputs must be a number, received: " in str(e1)
+    assert "All inputs must be a number, received: " in str(e2)
 
 
 def test_check_input_protect_division_zero():
@@ -138,5 +140,5 @@ def test_quotient():
         quotient([0, 1, 0])
 
     assert quotient([0, 1]) == 0
-    assert quotient([1, 3, 3]) == pytest.approx(1/9)
+    assert quotient([1, 3, 3]) == pytest.approx(1 / 9)
     assert "No items after the first cannot be zero when diving." in str(e)

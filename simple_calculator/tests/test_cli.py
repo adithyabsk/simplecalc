@@ -1,6 +1,6 @@
 import pytest
-import click
 from click.testing import CliRunner
+
 
 def test_exception_handling_valid():
     from simple_calculator.cli import _exception_handler
@@ -13,18 +13,14 @@ def test_exception_handling_valid():
 
 def test_exception_handling_error():
     from simple_calculator.cli import _exception_handler
-    from simple_calculator.calculator import (
-        CalculatorTypeError,
-        CalculatorValueError
-    )
 
     def f(test):
-        raise Exception('Test')
+        raise Exception("Test")
 
     with pytest.raises(Exception) as e:
         _exception_handler(f, [])
 
-    assert 'Test' in str(e)
+    assert "Test" in str(e)
 
 
 def test_exception_handling_captures_calctypeerror(capfd):
@@ -32,7 +28,7 @@ def test_exception_handling_captures_calctypeerror(capfd):
     from simple_calculator.calculator import CalculatorTypeError
 
     def f(n1, n2):
-        raise CalculatorTypeError('Test')
+        raise CalculatorTypeError("Test")
 
     _exception_handler(f, None, None)
 
@@ -45,7 +41,7 @@ def test_exception_handling_captures_calcvalueerror(capfd):
     from simple_calculator.calculator import CalculatorValueError
 
     def f(n1, n2):
-        raise CalculatorValueError('Test')
+        raise CalculatorValueError("Test")
 
     _exception_handler(f, None, None)
 
@@ -78,6 +74,7 @@ def test_calc_sum_fail():
 
 def test_calc_sum():
     from simple_calculator.cli import sum as s
+
     runner = CliRunner()
     result = runner.invoke(s, ["1", "0.2", "0.3"])
     assert result.exit_code == 0
@@ -100,6 +97,7 @@ def test_calc_difference_fail():
 
 def test_calc_difference():
     from simple_calculator.cli import difference
+
     runner = CliRunner()
     result = runner.invoke(difference, ["1", "0.2", "0.3"])
     assert result.exit_code == 0
@@ -122,6 +120,7 @@ def test_calc_product_fail():
 
 def test_calc_product():
     from simple_calculator.cli import product
+
     runner = CliRunner()
     result = runner.invoke(product, ["1", "0.2", "0.3"])
     assert result.exit_code == 0
@@ -145,13 +144,13 @@ def test_calc_quotient_fail():
     result = runner.invoke(quotient, ["0", "1", "0"])
     assert result.exit_code == 0
     assert (
-        "No items after the first cannot be zero when diving." 
-        in result.output
+        "No items after the first cannot be zero when diving." in result.output
     )
 
 
 def test_calc_quotient():
     from simple_calculator.cli import quotient
+
     runner = CliRunner()
     result = runner.invoke(quotient, ["1", "0.2", "0.3"])
     assert result.exit_code == 0
