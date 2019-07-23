@@ -2,7 +2,7 @@
 
 import click
 
-from simple_calculator.calculator import (
+from simplecalc.calculator import (
     CalculatorTypeError,
     CalculatorValueError,
     difference as d,

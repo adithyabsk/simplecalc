@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "simple_calculator"
+name = "simplecalc"
 version = "0.1.0"
 description = ""
 authors = ["Adithya Balaji <adithyabsk@gmail.com>"]
@@ -25,7 +25,7 @@ sphinx_rtd_theme = "^0.4.3"
 pre-commit = "^1.17"
 
 [tool.poetry.scripts]
-calc = "simple_calculator.cli:calc"
+calc = "simplecalc.cli:calc"
 
 [tool.black]
 line-length = 79
@@ -44,7 +44,7 @@ exclude = '''
 '''
 
 [tool.isort]
-known_first_party = 'simple_calculator'
+known_first_party = 'simplecalc'
 known_third_party = ["click", "pytest"]
 multi_line_output = 3
 lines_after_imports = 2

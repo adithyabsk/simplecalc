@@ -3,7 +3,7 @@ from click.testing import CliRunner
 
 
 def test_exception_handling_valid():
-    from simple_calculator.cli import _exception_handler
+    from simplecalc.cli import _exception_handler
 
     def f(n1, n2):
         return n1 + n2
@@ -12,7 +12,7 @@ def test_exception_handling_valid():
 
 
 def test_exception_handling_error():
-    from simple_calculator.cli import _exception_handler
+    from simplecalc.cli import _exception_handler
 
     def f(test):
         raise Exception("Test")
@@ -24,8 +24,8 @@ def test_exception_handling_error():
 
 
 def test_exception_handling_captures_calctypeerror(capfd):
-    from simple_calculator.cli import _exception_handler
-    from simple_calculator.calculator import CalculatorTypeError
+    from simplecalc.cli import _exception_handler
+    from simplecalc.calculator import CalculatorTypeError
 
     def f(n1, n2):
         raise CalculatorTypeError("Test")
@@ -37,8 +37,8 @@ def test_exception_handling_captures_calctypeerror(capfd):
 
 
 def test_exception_handling_captures_calcvalueerror(capfd):
-    from simple_calculator.cli import _exception_handler
-    from simple_calculator.calculator import CalculatorValueError
+    from simplecalc.cli import _exception_handler
+    from simplecalc.calculator import CalculatorValueError
 
     def f(n1, n2):
         raise CalculatorValueError("Test")
@@ -50,7 +50,7 @@ def test_exception_handling_captures_calcvalueerror(capfd):
 
 
 def test_calc_main():
-    from simple_calculator.cli import calc
+    from simplecalc.cli import calc
 
     runner = CliRunner()
     result = runner.invoke(calc)
@@ -59,7 +59,7 @@ def test_calc_main():
 
 
 def test_calc_sum_fail():
-    from simple_calculator.cli import sum as s
+    from simplecalc.cli import sum as s
 
     runner = CliRunner()
     result = runner.invoke(s)
@@ -73,7 +73,7 @@ def test_calc_sum_fail():
 
 
 def test_calc_sum():
-    from simple_calculator.cli import sum as s
+    from simplecalc.cli import sum as s
 
     runner = CliRunner()
     result = runner.invoke(s, ["1", "0.2", "0.3"])
@@ -82,7 +82,7 @@ def test_calc_sum():
 
 
 def test_calc_difference_fail():
-    from simple_calculator.cli import difference
+    from simplecalc.cli import difference
 
     runner = CliRunner()
     result = runner.invoke(difference)
@@ -96,7 +96,7 @@ def test_calc_difference_fail():
 
 
 def test_calc_difference():
-    from simple_calculator.cli import difference
+    from simplecalc.cli import difference
 
     runner = CliRunner()
     result = runner.invoke(difference, ["1", "0.2", "0.3"])
@@ -105,7 +105,7 @@ def test_calc_difference():
 
 
 def test_calc_product_fail():
-    from simple_calculator.cli import product
+    from simplecalc.cli import product
 
     runner = CliRunner()
     result = runner.invoke(product)
@@ -119,7 +119,7 @@ def test_calc_product_fail():
 
 
 def test_calc_product():
-    from simple_calculator.cli import product
+    from simplecalc.cli import product
 
     runner = CliRunner()
     result = runner.invoke(product, ["1", "0.2", "0.3"])
@@ -128,7 +128,7 @@ def test_calc_product():
 
 
 def test_calc_quotient_fail():
-    from simple_calculator.cli import quotient
+    from simplecalc.cli import quotient
 
     runner = CliRunner()
     result = runner.invoke(quotient)
@@ -149,7 +149,7 @@ def test_calc_quotient_fail():
 
 
 def test_calc_quotient():
-    from simple_calculator.cli import quotient
+    from simplecalc.cli import quotient
 
     runner = CliRunner()
     result = runner.invoke(quotient, ["1", "0.2", "0.3"])

@@ -87,7 +87,7 @@ stages:
 #     - task: GitHubRelease@0
 #       inputs:
 #         gitHubConnection: adithyabsk
-#         repositoryName: adithyabsk/simple_calculator
+#         repositoryName: adithyabsk/simplecalc
 #         tagSource: 'auto'
 #         assets:
 #           dist/*
