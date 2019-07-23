@@ -32,6 +32,7 @@ stages:
       matrix:
         Python36:
           python.version: '3.6'
+        Python37:
           python.version: '3.7'
     steps:
     - template: ci/install.yml
@@ -46,6 +47,7 @@ stages:
       matrix:
         Python36:
           python.version: '3.6'
+        Python37:
           python.version: '3.7'
     steps:
     - template: ci/install.yml
@@ -60,6 +62,7 @@ stages:
       matrix:
         Python36:
           python.version: '3.6'
+        Python37:
           python.version: '3.7'
     steps:
     - template: ci/install.yml
