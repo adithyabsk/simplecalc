@@ -22,9 +22,19 @@ tox = "^3.13"
 towncrier = "^19.2"
 sphinx = "^2.1"
 sphinx_rtd_theme = "^0.4.3"
+pre-commit = "^1.17"
 
 [tool.poetry.scripts]
 calc = "simple_calculator.cli:calc"
+
+[tool.isort]
+known_first_party = 'simple_calculator'
+known_third_party = ["click", "pytest"]
+multi_line_output = 3
+lines_after_imports = 2
+force_grid_wrap = 0
+combine_as_imports = true
+include_trailing_comma = true
 
 [build-system]
 requires = ["poetry>=0.12"]
