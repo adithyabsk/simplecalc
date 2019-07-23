@@ -10,10 +10,22 @@ click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
+flake8 = "^3.7"
+black = {version = "^18.3-alpha.0", allows-prereleases = true}
+isort = {version = "^4.3", extras = ["pyproject"]}
+seed-isort-config = "^1.9"
+pytest-cov = "^2.7"
+pytest-mock = "^1.10"
+xdoctest = "^0.9.1"
+coverage = "^4.5"
+tox = "^3.13"
+towncrier = "^19.2"
+sphinx = "^2.1"
+sphinx_rtd_theme = "^0.4.3"
+
+[tool.poetry.scripts]
+calc = "simple_calculator.cli:calc"
 
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
-
-[tool.poetry.scripts]
-calc = "simple_calculator.cli:calc"

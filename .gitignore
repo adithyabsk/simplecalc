@@ -109,4 +109,3 @@ pip-wheel-metadata/
 
 # Other
 .DS_Store
-poetry.lock
