@@ -14,10 +14,7 @@ steps:
     displayName: Add Poetry to path (Unix)
   # Windows
   - powershell: |
-      Write-Host "C:\Users\%USERPROFILE%"
-      Write-Host "%USERPROFILE%"
-      Write-Host "%USERPROFILE%\.poetry\bin"
-      Write-Host "##vso[task.prependpath]C:\Users\%USERPROFILE%\.poetry\bin"
+      Write-Host "##vso[task.prependpath]${env:USERPROFILE}\.poetry\bin"
     condition: eq( variables['Agent.OS'], 'Windows_NT' )
     displayName: Add poetry to path (Windows)
   - script: poetry install -vvv
