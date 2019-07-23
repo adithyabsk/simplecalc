@@ -1,0 +1,23 @@
+steps:
+  - task: UsePythonVersion@0
+    displayName: 'Use Python $(python.version)'
+    inputs:
+      versionSpec: '$(python.version)'
+  - script: |
+      pip install --upgrade pip
+      curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    displayName: Install Poetry
+  # Unix
+  - bash: |
+      export POETRY=$HOME/.poetry/bin
+      echo "##vso[task.prependpath]$POETRY"
+    condition: or(eq( variables['Agent.OS'], 'Linux' ), eq( variables['Agent.OS'], 'Darwin' ))
+    displayName: Add Poetry to path (Unix)
+  # Windows
+  - powershell: |
+      Set-Variable -Name POETRY -Value %USERPROFILE%\.poetry\bin
+      Write-Host "##vso[task.prependpath]$POETRY"
+    condition: eq( variables['Agent.OS'], 'Windows_NT' )
+    displayName: Add poetry to path (Windows)
+  - script: poetry install -vvv
+    displayName: Install all packages

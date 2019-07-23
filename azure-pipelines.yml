@@ -1,0 +1,91 @@
+trigger:
+  branches:
+    include:
+      - master
+      - development
+  tags:
+    include:
+    - v*
+
+pr:
+  branches:
+    include:
+    - '*'
+
+stages:
+- stage: Build
+  jobs:
+  # QA
+  - job: lint
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+    - template: ci/lint.yml
+
+  # Build
+  # Linux
+  - job: test_linux
+    dependsOn: lint
+    pool:
+      vmImage: 'ubuntu-16.04'
+    strategy:
+      matrix:
+        Python36:
+          python.version: '3.6'
+          python.version: '3.7'
+    steps:
+    - template: ci/install.yml
+    - template: ci/tests.yml
+
+  #MacOS
+  - job: test_macos
+    dependsOn: lint
+    pool:
+      vmImage: 'macOS-10.13'
+    strategy:
+      matrix:
+        Python36:
+          python.version: '3.6'
+          python.version: '3.7'
+    steps:
+    - template: ci/install.yml
+    - template: ci/tests.yml
+
+  #Windows
+  - job: test_windows
+    dependsOn: lint
+    pool:
+      vmImage: 'vs2017-win2016'
+    strategy:
+      matrix:
+        Python36:
+          python.version: '3.6'
+          python.version: '3.7'
+    steps:
+    - template: ci/install.yml
+    - template: ci/tests.yml
+
+# - stage: Release
+#   condition: contains(variables['Build.SourceBranch'], 'tags')
+#   jobs:
+#   - job: release
+#     pool:
+#       vmImage: 'macOS-10.13'
+#     steps:
+#     - task: UsePythonVersion@0
+#       inputs:
+#         versionSpec: '3.6'
+#       displayName: Select Python version
+#     - template: ci/install.yml
+#     - script: |
+#        poetry build
+#        poetry publish -u $(pypi_username) -p $(pypi_password)
+#       displayName: Release to pypi
+#     - task: GitHubRelease@0
+#       inputs:
+#         gitHubConnection: adithyabsk
+#         repositoryName: adithyabsk/simple_calculator
+#         tagSource: 'auto'
+#         assets:
+#           dist/*
+#       displayName: Add release to GitHub

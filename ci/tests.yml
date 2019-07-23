@@ -1,0 +1,20 @@
+steps: 
+  - script: poetry run pytest --junitxml=junit/test-results.xml --cov-report=xml
+    displayName: Run pytest
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: 'junit/test-results.xml'
+      testRunTitle: '$(Agent.OS) - $(Build.BuildNumber)[$(Agent.JobName)] - Python $(python.version)'
+    condition: succeededOrFailed()
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
+      reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
+  - task: BuildQualityChecks@6
+    inputs:
+      checkCoverage: true
+      coverageFailOption: 'fixed'
+      coverageType: 'branches'
+      coverageThreshold: '90'
+    displayName: 'Check build quality'
