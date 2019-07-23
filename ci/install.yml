@@ -9,14 +9,12 @@ steps:
     displayName: Install Poetry
   # Unix
   - bash: |
-      export POETRY=$HOME/.poetry/bin
-      echo "##vso[task.prependpath]$POETRY"
+      echo "##vso[task.prependpath]$HOME/.poetry/bin"
     condition: or(eq( variables['Agent.OS'], 'Linux' ), eq( variables['Agent.OS'], 'Darwin' ))
     displayName: Add Poetry to path (Unix)
   # Windows
   - powershell: |
-      Set-Variable -Name POETRY -Value %USERPROFILE%\.poetry\bin
-      Write-Host "##vso[task.prependpath]$POETRY"
+      Write-Host "##vso[task.prependpath]%USERPROFILE%\.poetry\bin"
     condition: eq( variables['Agent.OS'], 'Windows_NT' )
     displayName: Add poetry to path (Windows)
   - script: poetry install -vvv
