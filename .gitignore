@@ -109,3 +109,6 @@ pip-wheel-metadata/
 
 # Other
 .DS_Store
+
+# Sphinx
+doc/_build/
