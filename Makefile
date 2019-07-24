@@ -1,5 +1,5 @@
 CWD=$(shell pwd)
-PKG=simple_calculator
+PKG=simplecalc
 
 clean:
 	find ./$(PKG) -name "*.pyc" -exec rm -rfv {} \;

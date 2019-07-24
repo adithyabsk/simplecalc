@@ -20,9 +20,13 @@ xdoctest = "^0.9.1"
 coverage = "^4.5"
 tox = "^3.13"
 towncrier = "^19.2"
+pre-commit = "^1.17"
 sphinx = "^2.1"
 sphinx_rtd_theme = "^0.4.3"
-pre-commit = "^1.17"
+toml = "^0.10.0"
+
+[tool.poetry.extras]
+doc = ["sphinx", "sphinx_rtd_theme", "toml"]
 
 [tool.poetry.scripts]
 simplecalc = "simplecalc.cli:simplecalc"
