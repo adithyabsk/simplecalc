@@ -50,12 +50,12 @@ def test_exception_handling_captures_calcvalueerror(capfd):
 
 
 def test_calc_main():
-    from simplecalc.cli import calc
+    from simplecalc.cli import simplecalc
 
     runner = CliRunner()
-    result = runner.invoke(calc)
+    result = runner.invoke(simplecalc)
     assert result.exit_code == 0
-    assert "Usage: calc" in result.output
+    assert "Usage: simplecalc" in result.output
 
 
 def test_calc_sum_fail():
