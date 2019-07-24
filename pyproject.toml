@@ -25,7 +25,7 @@ sphinx_rtd_theme = "^0.4.3"
 pre-commit = "^1.17"
 
 [tool.poetry.scripts]
-calc = "simplecalc.cli:calc"
+simplecalc = "simplecalc.cli:simplecalc"
 
 [tool.black]
 line-length = 79
