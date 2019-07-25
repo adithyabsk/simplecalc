@@ -13,7 +13,7 @@ from simplecalc.calculator import (
 
 
 def _exception_handler(op, *args):
-    """Handle internally raised exceptions and print to console
+    """Handle internally raised exceptions and print to console.
 
     Args:
         op (func): The function to perform
@@ -31,35 +31,35 @@ def _exception_handler(op, *args):
 
 @click.group()
 def simplecalc():  # pragma: no cover
-    """A simple calculator utility."""
+    """Compute simple calculations."""
     pass
 
 
 @simplecalc.command()
 @click.argument("numbers", nargs=-1)
 def sum(numbers):
-    """Finds the sum of a list of numbers."""
+    """Find the sum of a list of numbers."""
     click.echo(_exception_handler(s, numbers))
 
 
 @simplecalc.command()
 @click.argument("numbers", nargs=-1)
 def difference(numbers):
-    """Finds the difference of a list of numbers."""
+    """Find the difference of a list of numbers."""
     click.echo(_exception_handler(d, numbers))
 
 
 @simplecalc.command()
 @click.argument("numbers", nargs=-1)
 def product(numbers):
-    """Finds the product of a list of numbers."""
+    """Find the product of a list of numbers."""
     click.echo(_exception_handler(p, numbers))
 
 
 @simplecalc.command()
 @click.argument("numbers", nargs=-1)
 def quotient(numbers):
-    """Finds the quotient of a list of numbers."""
+    """Find the quotient of a list of numbers."""
     click.echo(_exception_handler(q, numbers))
 
 

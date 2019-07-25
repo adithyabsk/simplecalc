@@ -1,8 +1,11 @@
+"""Test the command line interace to the simplecalc API."""
+
 import pytest
 from click.testing import CliRunner
 
 
 def test_exception_handling_valid():
+    """Test cli exception handling valid input."""
     from simplecalc.cli import _exception_handler
 
     def f(n1, n2):
@@ -12,6 +15,7 @@ def test_exception_handling_valid():
 
 
 def test_exception_handling_error():
+    """Test cli exception handling invalid input."""
     from simplecalc.cli import _exception_handler
 
     def f(test):
@@ -23,25 +27,23 @@ def test_exception_handling_error():
     assert "Test" in str(e)
 
 
-def test_exception_handling_captures_calctypeerror(capfd):
+@pytest.mark.parametrize(
+    "err_class", ["CalculatorTypeError", "CalculatorValueError"]
+)
+def test_exception_handling_captures_calctypeerror(err_class, capfd):
+    """Test exception handling captures input.
+
+    Args:
+        capfd: pytest stdout/stderr capture data
+
+    """
     from simplecalc.cli import _exception_handler
-    from simplecalc.calculator import CalculatorTypeError
+    import simplecalc.calculator as calc
+
+    Error = getattr(calc, err_class)
 
     def f(n1, n2):
-        raise CalculatorTypeError("Test")
-
-    _exception_handler(f, None, None)
-
-    out, err = capfd.readouterr()
-    assert "Test" in out
-
-
-def test_exception_handling_captures_calcvalueerror(capfd):
-    from simplecalc.cli import _exception_handler
-    from simplecalc.calculator import CalculatorValueError
-
-    def f(n1, n2):
-        raise CalculatorValueError("Test")
+        raise Error("Test")
 
     _exception_handler(f, None, None)
 
@@ -50,6 +52,7 @@ def test_exception_handling_captures_calcvalueerror(capfd):
 
 
 def test_calc_main():
+    """Test main cli runner output."""
     from simplecalc.cli import simplecalc
 
     runner = CliRunner()
@@ -59,6 +62,7 @@ def test_calc_main():
 
 
 def test_calc_sum_fail():
+    """Test sum failure."""
     from simplecalc.cli import sum as s
 
     runner = CliRunner()
@@ -73,6 +77,7 @@ def test_calc_sum_fail():
 
 
 def test_calc_sum():
+    """Test sum valid inputs."""
     from simplecalc.cli import sum as s
 
     runner = CliRunner()
@@ -82,6 +87,7 @@ def test_calc_sum():
 
 
 def test_calc_difference_fail():
+    """Test difference command fail cases."""
     from simplecalc.cli import difference
 
     runner = CliRunner()
@@ -96,6 +102,7 @@ def test_calc_difference_fail():
 
 
 def test_calc_difference():
+    """Test difference command with valid inputs."""
     from simplecalc.cli import difference
 
     runner = CliRunner()
@@ -105,6 +112,7 @@ def test_calc_difference():
 
 
 def test_calc_product_fail():
+    """Test product command with invalid inputs."""
     from simplecalc.cli import product
 
     runner = CliRunner()
@@ -119,6 +127,7 @@ def test_calc_product_fail():
 
 
 def test_calc_product():
+    """Test product command with valid inputs."""
     from simplecalc.cli import product
 
     runner = CliRunner()
@@ -128,6 +137,7 @@ def test_calc_product():
 
 
 def test_calc_quotient_fail():
+    """Test quotient command for failure modes."""
     from simplecalc.cli import quotient
 
     runner = CliRunner()
@@ -149,6 +159,7 @@ def test_calc_quotient_fail():
 
 
 def test_calc_quotient():
+    """Test quotient command with valid inputs."""
     from simplecalc.cli import quotient
 
     runner = CliRunner()

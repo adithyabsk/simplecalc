@@ -4,19 +4,19 @@ from functools import reduce
 
 
 class CalculatorValueError(ValueError):
-    """Custom Value Error for calculation operations"""
+    """Custom ValueError for calculation operations."""
 
     pass
 
 
 class CalculatorTypeError(TypeError):
-    """Custom Type Error for calculation operations"""
+    """Custom Type Error for calculation operations."""
 
     pass
 
 
 def _convert_num(s):
-    """Convert a numeric string to a number
+    """Convert a numeric string to a number.
 
     Args:
         s (str): A number representing a string
@@ -32,18 +32,21 @@ def _convert_num(s):
 
 
 def _check_input(inp, check_zero=False):
-    """Validates the input for the aggregation functions.
+    """Validate the input for the aggregation functions.
 
     Args:
         inp (list): An list that is hopefully of numbers
         check_zero (bool): Whether to raise on zero being one of the later
             arguments in the list.
 
+    Returns:
+        inp: converted input data
+
     Raises:
-        TypeError: If the input is not a list or tuple.
-        ValueError: If the input contains fewer than 2 items, if any inputs \
-            are not numbers, or if any items after the first are zero when \
-            diving.
+        CalculatorTypeError: If the input is not a list or tuple.
+        CalculatorValueError: If the input contains fewer than 2 items, if \
+            any inputs are not numbers, or if any items after the first are \
+            zero when diving.
 
     """
     if not isinstance(inp, (list, tuple)):
@@ -70,7 +73,7 @@ def _check_input(inp, check_zero=False):
 
 
 def sum_(nums):
-    """Finds the sum of a list of numbers.
+    """Find the sum of a list of numbers.
 
     Args:
         nums (list): A list of numbers
@@ -83,7 +86,7 @@ def sum_(nums):
 
 
 def difference(nums):
-    """Finds the difference of a list of numbers.
+    """Find the difference of a list of numbers.
 
     Args:
         nums (list): A list of numbers
@@ -96,7 +99,7 @@ def difference(nums):
 
 
 def product(nums):
-    """Finds the product of a list of numbers.
+    """Find the product of a list of numbers.
 
     Args:
         nums (list): A list of numbers
@@ -109,7 +112,7 @@ def product(nums):
 
 
 def quotient(nums):
-    """Finds the quotient of a list of numbers.
+    """Find the quotient of a list of numbers.
 
     Args:
         nums (list): A list of numbers

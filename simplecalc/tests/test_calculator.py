@@ -4,6 +4,7 @@ import pytest
 
 
 def test_custom_exceptions():
+    """Test that custom exceptions work and are raised."""
     from simplecalc.calculator import CalculatorValueError, CalculatorTypeError
 
     with pytest.raises(CalculatorValueError) as e1:
@@ -18,6 +19,7 @@ def test_custom_exceptions():
 
 
 def test_convet_num():
+    """Test that input conversions work."""
     from simplecalc.calculator import _convert_num
 
     _convert_num("1") == 1
@@ -28,6 +30,7 @@ def test_convet_num():
 
 
 def test_check_input_not_list():
+    """Test that inputs are of type list."""
     from simplecalc.calculator import _check_input
     from simplecalc.calculator import CalculatorTypeError
 
@@ -38,6 +41,7 @@ def test_check_input_not_list():
 
 
 def test_check_input_list_length():
+    """Test that the input length has at least two items."""
     from simplecalc.calculator import _check_input
     from simplecalc.calculator import CalculatorValueError
 
@@ -60,6 +64,7 @@ def test_check_input_list_length():
 
 
 def test_check_input_all_numbers_conversion():
+    """Test that the input number conversion works on lists."""
     from simplecalc.calculator import _check_input
 
     l1 = [0, 1, 2]
@@ -72,6 +77,7 @@ def test_check_input_all_numbers_conversion():
 
 
 def test_check_input_all_numbers_error():
+    """Test that the input conversion fails as required."""
     from simplecalc.calculator import _check_input
     from simplecalc.calculator import CalculatorValueError
 
@@ -89,6 +95,7 @@ def test_check_input_all_numbers_error():
 
 
 def test_check_input_protect_division_zero():
+    """Test that the input conversion fails when checking for zero."""
     from simplecalc.calculator import _check_input
     from simplecalc.calculator import CalculatorValueError
 
@@ -102,13 +109,8 @@ def test_check_input_protect_division_zero():
     assert "No items after the first cannot be zero when diving." in str(e)
 
 
-def test_check_input_valid():
-    from simplecalc.calculator import _check_input
-
-    assert _check_input([0, 1, 2]) == [0, 1, 2]
-
-
 def test_sum():
+    """Test the basic sum function."""
     from simplecalc.calculator import sum_
 
     assert sum_([0, 1]) == 1
@@ -116,6 +118,7 @@ def test_sum():
 
 
 def test_difference():
+    """Test the basic difference function."""
     from simplecalc.calculator import difference
 
     assert difference([0, 1, -10, 12]) == -3
@@ -123,6 +126,7 @@ def test_difference():
 
 
 def test_product():
+    """Test the basic product function."""
     from simplecalc.calculator import product
 
     assert product([0, 1, -10, 12]) == 0
@@ -130,6 +134,7 @@ def test_product():
 
 
 def test_quotient():
+    """Test the quotient function along with zero inputs."""
     from simplecalc.calculator import quotient
     from simplecalc.calculator import CalculatorValueError
 

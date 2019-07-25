@@ -1,3 +1,5 @@
+"""Simple calculator API."""
+
 from simplecalc.calculator import (
     CalculatorTypeError,
     CalculatorValueError,
