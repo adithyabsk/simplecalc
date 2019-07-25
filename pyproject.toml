@@ -43,6 +43,7 @@ sphinx = "^2.1"
 sphinx_rtd_theme = "^0.4.3"
 toml = "^0.10.0"
 darglint = "^0.5.7"
+docutils = "<0.15.1" # temporary hot patch 
 
 [tool.poetry.extras]
 doc = ["sphinx", "sphinx_rtd_theme"]
