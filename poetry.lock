@@ -671,10 +671,10 @@ python-versions = ">=2.7"
 version = "0.5.2"
 
 [extras]
-doc = ["sphinx", "sphinx_rtd_theme", "toml"]
+doc = ["sphinx", "sphinx_rtd_theme"]
 
 [metadata]
-content-hash = "db4cd473c6ac74fa0c057d2de52dd4fa1925a9b77973a918cdef3fb9e1015c41"
+content-hash = "99fdfa6b18ea11719b71736d8fb1c1727727bf7d362c4cf35ab7843b44d079f6"
 python-versions = "^3.6"
 
 [metadata.hashes]
