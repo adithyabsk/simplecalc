@@ -19,5 +19,19 @@ __all__ = [
     "quotient",
 ]
 
-__doc__ = "An over-engineered calculator."
-__version__ = "0.1.0"
+
+def get_pyproject():
+    import os
+    import toml
+
+    init_path = os.path.abspath(os.path.dirname(__file__))
+    pyproject_path = os.path.join(init_path, "../pyproject.toml")
+
+    with open(pyproject_path, "r") as fopen:
+        pyproject = toml.load(fopen)
+
+    return pyproject["tool"]["poetry"]
+
+
+__version__ = get_pyproject()["version"]
+__doc__ = get_pyproject()["description"]
