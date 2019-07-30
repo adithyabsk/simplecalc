@@ -21,8 +21,7 @@ toml = "^0.10.0"
 
 sphinx = { version = "^2.1", optional = true }
 sphinx_rtd_theme = { version = "^0.4.3", optional = true }
-
-
+m2r = {version = "^0.2.1", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
@@ -46,7 +45,7 @@ darglint = "^0.5.7"
 docutils = "<0.15.1" # temporary hot patch 
 
 [tool.poetry.extras]
-doc = ["sphinx", "sphinx_rtd_theme"]
+doc = ["sphinx", "sphinx_rtd_theme", "m2r"]
 
 [tool.poetry.scripts]
 simplecalc = "simplecalc.cli:simplecalc"
