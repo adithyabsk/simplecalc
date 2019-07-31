@@ -16,7 +16,7 @@ class CalculatorTypeError(TypeError):
 
 
 def _convert_num(s):
-    """Convert a numeric string to a number.
+    """Converts a numeric string to a number.
 
     Args:
         s (str): A number representing a string
@@ -36,8 +36,7 @@ def _check_input(inp, check_zero=False):
 
     Args:
         inp (list): An list that is hopefully of numbers
-        check_zero (bool): Whether to raise on zero being one of the later
-            arguments in the list.
+        check_zero (bool): Whether to raise on zero being one of the later arguments in the list.
 
     Returns:
         inp: converted input data
@@ -60,14 +59,10 @@ def _check_input(inp, check_zero=False):
         try:
             inp = [_convert_num(n) for n in inp]
         except ValueError:
-            raise CalculatorValueError(
-                f"All inputs must be a number, received: {inp}."
-            )
+            raise CalculatorValueError(f"All inputs must be a number, received: {inp}.")
 
     if check_zero and (0 in inp[1:]):
-        raise CalculatorValueError(
-            "No items after the first cannot be zero when diving."
-        )
+        raise CalculatorValueError("No items after the first cannot be zero when diving.")
 
     return inp
 
@@ -131,7 +126,7 @@ def quotient(nums):
         0.041666666666666664
 
     Args:
-        nums (list): A list of numbers
+        n (list): A list of numbers
 
     Returns:
         int or float: The quotient

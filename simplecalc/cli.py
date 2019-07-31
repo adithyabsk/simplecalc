@@ -3,12 +3,12 @@
 import click
 
 from simplecalc.calculator import (
-    CalculatorTypeError,
     CalculatorValueError,
     difference as d,
     product as p,
     quotient as q,
     sum_ as s,
+    CalculatorTypeError,
 )
 
 
