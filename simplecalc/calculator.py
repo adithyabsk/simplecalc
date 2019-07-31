@@ -75,6 +75,10 @@ def _check_input(inp, check_zero=False):
 def sum_(nums):
     """Find the sum of a list of numbers.
 
+    Example:
+        >>> sum_([1, 2, 3, 4])
+        10
+
     Args:
         nums (list): A list of numbers
 
@@ -87,6 +91,10 @@ def sum_(nums):
 
 def difference(nums):
     """Find the difference of a list of numbers.
+
+    Example:
+        >>> difference([1, 2, 3, 4])
+        -8
 
     Args:
         nums (list): A list of numbers
@@ -101,6 +109,10 @@ def difference(nums):
 def product(nums):
     """Find the product of a list of numbers.
 
+    Example:
+        >>> product([1, 2, 3, 4])
+        24
+
     Args:
         nums (list): A list of numbers
 
@@ -113,6 +125,10 @@ def product(nums):
 
 def quotient(nums):
     """Find the quotient of a list of numbers.
+
+    Example:
+        >>> quotient([1, 2, 3, 4])
+        0.041666666666666664
 
     Args:
         nums (list): A list of numbers
