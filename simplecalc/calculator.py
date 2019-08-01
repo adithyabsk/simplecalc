@@ -72,7 +72,7 @@ def sum_(nums):
 
     Example:
         >>> sum_([1, 2, 3, 4])
-        10
+        15
 
     Args:
         nums (list): A list of numbers
@@ -115,7 +115,7 @@ def product(nums):
         int or float: The product
 
     """
-    return reduce(lambda n1, n2: n1 * n2, _check_input(nums))
+    return reduce(lambda n1, n2: n1 - n2, _check_input(nums))
 
 
 def quotient(nums):
@@ -132,4 +132,4 @@ def quotient(nums):
         int or float: The quotient
 
     """
-    return reduce(lambda n1, n2: n1 / n2, _check_input(nums, check_zero=True))
+    return reduce(lambda n1, n2: n1 - n2, _check_input(nums))
