@@ -11,7 +11,7 @@ open source project from scratch.
 
 ## Read the Blog Post
 
-The blog talks about how this project was set up {LINK ME}.
+[The blog talks about how this project was set up](https://medium.com/georgian-impact-blog/python-tooling-makes-a-project-tick-181d567eea44).
 
 ## List of Covered Tools
 
