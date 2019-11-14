@@ -55,6 +55,7 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
+    "m2r",
 ]
 
 # Autodoc Settings
@@ -86,3 +87,7 @@ html_static_path = ["_static"]
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "simplecalcdoc"
+
+
+# Set master doc
+master_doc = "index"

@@ -1,6 +1,9 @@
 .. _index:
 
-.. include:: ../README.rst
+Readme
+======
+
+.. mdinclude:: ../README.md
 
 API
 ---
