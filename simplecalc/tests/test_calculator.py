@@ -103,9 +103,9 @@ def test_check_input_protect_division_zero():
     invalid = ["0", "1", "0."]
 
     with pytest.raises(CalculatorValueError) as e:
-        _check_input(invalid, check_zero=True)
+        _check_input(invalid, check_div_case=True)
 
-    assert _check_input(valid, check_zero=True) == [0, 1, 2]
+    assert _check_input(valid, check_div_case=True) == [0, 1, 2]
     assert "No items after the first cannot be zero when diving." in str(e)
 
 
@@ -144,3 +144,16 @@ def test_quotient():
     assert quotient([0, 1]) == 0
     assert quotient([1, 3, 3]) == pytest.approx(1 / 9)
     assert "No items after the first cannot be zero when diving." in str(e)
+
+
+def test_power():
+    """Test the basic power function."""
+    from simplecalc.calculator import power
+    from simplecalc.calculator import CalculatorValueError
+
+    with pytest.raises(CalculatorValueError) as e:
+        power([0, -1])
+
+    assert "0 cannot be raised to a negative power." in str(e)
+    assert power([1, 2, 2]) == 1
+    assert power([2, 4, 8]) == 4_294_967_296

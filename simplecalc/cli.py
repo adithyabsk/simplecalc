@@ -6,7 +6,8 @@ from simplecalc.calculator import (
     CalculatorTypeError,
     CalculatorValueError,
     difference as d,
-    product as p,
+    power as po,
+    product as pr,
     quotient as q,
     sum_ as s,
 )
@@ -53,7 +54,7 @@ def difference(numbers):
 @click.argument("numbers", nargs=-1)
 def product(numbers):
     """Find the product of a list of numbers."""
-    click.echo(_exception_handler(p, numbers))
+    click.echo(_exception_handler(pr, numbers))
 
 
 @simplecalc.command()
@@ -61,6 +62,13 @@ def product(numbers):
 def quotient(numbers):
     """Find the quotient of a list of numbers."""
     click.echo(_exception_handler(q, numbers))
+
+
+@simplecalc.command()
+@click.argument("numbers", nargs=-1)
+def power(numbers):
+    """Find the power of a list of numbers."""
+    click.echo(_exception_handler(po, numbers))
 
 
 if __name__ == "__main__":

@@ -166,3 +166,13 @@ def test_calc_quotient():
     result = runner.invoke(quotient, ["1", "0.2", "0.3"])
     assert result.exit_code == 0
     assert pytest.approx(float(result.output)) == 16.6666666667
+
+
+def test_calc_power():
+    """Test power command with valid inputs."""
+    from simplecalc.cli import power
+
+    runner = CliRunner()
+    result = runner.invoke(power, ["2", "4", "2"])
+    assert result.exit_code == 0
+    assert pytest.approx(float(result.output)) == 256
