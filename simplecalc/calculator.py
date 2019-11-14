@@ -31,13 +31,13 @@ def _convert_num(s):
         return float(s)
 
 
-def _check_input(inp, check_zero=False):
+def _check_input(inp, check_div_case=False, check_pow_case=False):
     """Validate the input for the aggregation functions.
 
     Args:
         inp (list): An list that is hopefully of numbers
-        check_zero (bool): Whether to raise on zero being one of the later
-            arguments in the list.
+        check_div_case (bool): Whether to assert checks for division.
+        check_pow_case (bool): Whether to assert checks for power.
 
     Returns:
         inp: converted input data
@@ -64,10 +64,13 @@ def _check_input(inp, check_zero=False):
                 f"All inputs must be a number, received: {inp}."
             )
 
-    if check_zero and (0 in inp[1:]):
+    if check_div_case and (0 in inp[1:]):
         raise CalculatorValueError(
             "No items after the first cannot be zero when diving."
         )
+
+    if check_pow_case and ((0 == inp[0]) and (len(inp) == 2) and (inp[1] < 0)):
+        raise CalculatorValueError("0 cannot be raised to a negative power.")
 
     return inp
 
@@ -121,4 +124,23 @@ def quotient(nums):
         int or float: The quotient
 
     """
-    return reduce(lambda n1, n2: n1 / n2, _check_input(nums, check_zero=True))
+    return reduce(
+        lambda n1, n2: n1 / n2, _check_input(nums, check_div_case=True)
+    )
+
+
+def power(nums):
+    """Find the power of a list of numbers.
+
+    {1}^{2}^{3}
+
+    Args:
+        nums (list): A list of numbers
+
+    Returns:
+        int or float: The power
+
+    """
+    return reduce(
+        lambda n1, n2: n1 ** n2, _check_input(nums, check_pow_case=True)
+    )
