@@ -17,4 +17,4 @@ repos:
     rev: v2.2.3
     hooks:
     -    id: flake8
-         additional_dependencies: ['flake8-docstrings', 'darglint', 'pydocstyle<4.0']
+         additional_dependencies: ['flake8-docstrings', 'darglint']
