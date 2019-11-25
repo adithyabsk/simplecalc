@@ -86,7 +86,7 @@ stages:
       displayName: Release to pypi
     - task: GitHubRelease@0
       inputs:
-        gitHubConnection: adithyabsk
+        gitHubConnection: github.com_adithyabsk
         repositoryName: adithyabsk/simplecalc
         tagSource: 'auto'
         assets:
