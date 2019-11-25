@@ -68,27 +68,27 @@ stages:
     - template: ci/install.yml
     - template: ci/tests.yml
 
-# - stage: Release
-#   condition: contains(variables['Build.SourceBranch'], 'tags')
-#   jobs:
-#   - job: release
-#     pool:
-#       vmImage: 'macOS-10.13'
-#     steps:
-#     - task: UsePythonVersion@0
-#       inputs:
-#         versionSpec: '3.6'
-#       displayName: Select Python version
-#     - template: ci/install.yml
-#     - script: |
-#        poetry build
-#        poetry publish -u $(pypi_username) -p $(pypi_password)
-#       displayName: Release to pypi
-#     - task: GitHubRelease@0
-#       inputs:
-#         gitHubConnection: adithyabsk
-#         repositoryName: adithyabsk/simplecalc
-#         tagSource: 'auto'
-#         assets:
-#           dist/*
-#       displayName: Add release to GitHub
+- stage: Release
+  condition: contains(variables['Build.SourceBranch'], 'tags')
+  jobs:
+  - job: release
+    pool:
+      vmImage: 'macOS-10.13'
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.6'
+      displayName: Select Python version
+    - template: ci/install.yml
+    - script: |
+       poetry build
+       poetry publish -u $(pypi_username) -p $(pypi_password)
+      displayName: Release to pypi
+    - task: GitHubRelease@0
+      inputs:
+        gitHubConnection: adithyabsk
+        repositoryName: adithyabsk/simplecalc
+        tagSource: 'auto'
+        assets:
+          dist/*
+      displayName: Add release to GitHub
